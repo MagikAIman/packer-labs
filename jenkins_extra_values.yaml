@@ -1,0 +1,8 @@
+additionalAgents:
+  packer:
+    podName: packer
+    customJenkinsLabels: packer
+    # An example of overriding the jnlp container
+    # sideContainerName: jnlp
+    image: hashicorp/packer
+    tag: latest
