@@ -1,5 +1,7 @@
 pipeline {
-  agent packer
+  agent {
+    docker { image 'hashicorp/packer:1.8' }
+  }
   stages {
     stage('Build AMIS') {
       steps {
