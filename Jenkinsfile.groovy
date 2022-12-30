@@ -1,13 +1,13 @@
 pipeline {
-  agent any
+  docker { image 'hashicorp/packer:1.8' }
 
   stages {
     stage('Packer - Build Ubuntu Image on vSphere') {
       steps {
         sh """
         #!/bin/bash
-        packer init .
-        packer build -force .
+        packer init ./DockerExamples
+        packer build ./DockerExamples
         """
       }
     }
