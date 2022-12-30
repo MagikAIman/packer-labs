@@ -1,13 +1,14 @@
 pipeline {
-  docker { image 'hashicorp/packer:1.8' }
-
+  agent {
+    docker { image 'hashicorp/packer:1.8' }
+  }
   stages {
-    stage('Packer - Build Ubuntu Image on vSphere') {
+    stage('Build AMIS') {
       steps {
         sh """
         #!/bin/bash
-        packer init ./DockerExamples
-        packer build ./DockerExamples
+        packer init ./AwsExamples
+        packer build ./AwsExamples/aws-ubuntu.pkr.hcl
         """
       }
     }
